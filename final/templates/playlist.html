@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--person_name, quote, quote_date, quote_source_type, quote_source, quote_rating-->
+<body style="background-color:black;">
+<h2 style="color:Green;">Get the playlist in your account</h2>
+<form id="credentialForm" action="{{ url_for('playlist') }}" method="post" onsubmit="return submitForm()">
+    <p class="heading"><span style="color:white;">Name of the playlist: </span><input type="text" name="Name" required></p>
+    <p class="heading"><span style="color:white;">Prompt: </span><textarea rows="5" cols="50" name="Prompt" required></textarea></p>
+    <p class="heading"><span style="color:white;">Number of songs (minimum 2):  </span><input type="text" name="Length" required></p>
+    <p><button type="submit" id="submitButton">Enter</button></p>
+    <p id="loadingMessage" style="display: none; color: white;">Loading...</p>
+</form>
+<script>
+    function submitForm() {
+        // Disable the submit button
+        document.getElementById("submitButton").disabled = true;
+
+        // Show the loading message
+        document.getElementById("loadingMessage").style.display = "block";
+
+        // Return true to allow form submission
+        return true;
+    }
+</script>
+</body>
+{% endblock %}
